@@ -1,0 +1,586 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:PIC16F690
+LIBS:rrs_433_receiver_module
+LIBS:PIC16F690 Development Board-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "PIC16F690 Development Board"
+Date "7th March 2016"
+Rev "1.0"
+Comp "MottramLabs"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L PIC16F690 IC1
+U 1 1 56DDBAAF
+P 4825 3875
+F 0 "IC1" H 5125 4075 60  0000 C CNN
+F 1 "PIC16F690" H 5525 1725 60  0000 C CNN
+F 2 "DRM_KiCad_Library:DIL_20_Single_Sided" H 4825 3875 60  0001 C CNN
+F 3 "" H 4825 3875 60  0000 C CNN
+	1    4825 3875
+	1    0    0    -1  
+$EndComp
+$Comp
+L Crystal Y1
+U 1 1 56DDBB09
+P 3375 4225
+F 0 "Y1" H 3375 4375 50  0000 C CNN
+F 1 "20MHz" H 3375 4075 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Crystal_HC49_Single_Sided" H 3375 4225 50  0001 C CNN
+F 3 "" H 3375 4225 50  0000 C CNN
+	1    3375 4225
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 56DDBB38
+P 3025 4575
+F 0 "C1" H 3050 4675 50  0000 L CNN
+F 1 "22pF" H 3050 4475 50  0000 L CNN
+F 2 "DRM_KiCad_Library:Capacitor_01_Single_Sided" H 3063 4425 50  0001 C CNN
+F 3 "" H 3025 4575 50  0000 C CNN
+	1    3025 4575
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C2
+U 1 1 56DDBB6E
+P 3675 4575
+F 0 "C2" H 3700 4675 50  0000 L CNN
+F 1 "22pF" H 3700 4475 50  0000 L CNN
+F 2 "DRM_KiCad_Library:Capacitor_01_Single_Sided" H 3713 4425 50  0001 C CNN
+F 3 "" H 3675 4575 50  0000 C CNN
+	1    3675 4575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3025 4725 3025 4875
+Wire Wire Line
+	3675 4725 3675 4875
+Wire Wire Line
+	3525 4225 3925 4225
+Wire Wire Line
+	3675 4225 3675 4425
+Wire Wire Line
+	3225 4225 3025 4225
+Wire Wire Line
+	3025 3975 3025 4425
+Wire Wire Line
+	4825 4625 3925 4625
+Wire Wire Line
+	3925 4625 3925 4225
+Connection ~ 3675 4225
+Wire Wire Line
+	4825 4475 3975 4475
+Wire Wire Line
+	3975 4475 3975 3975
+Wire Wire Line
+	3975 3975 3025 3975
+Connection ~ 3025 4225
+Wire Wire Line
+	4825 5825 4575 5825
+Wire Wire Line
+	4575 5825 4575 5975
+Wire Wire Line
+	6375 3875 6425 3875
+Wire Wire Line
+	6425 3875 6425 3625
+$Comp
+L CONN_01X06 P1
+U 1 1 56DDBE35
+P 3975 3375
+F 0 "P1" H 3975 3725 50  0000 C CNN
+F 1 "ISP Header" H 3975 2975 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Header_6W_Single_Sided" H 3975 3375 50  0001 C CNN
+F 3 "" H 3975 3375 50  0000 C CNN
+	1    3975 3375
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4825 4025 4325 4025
+Wire Wire Line
+	4325 4025 4325 3525
+Wire Wire Line
+	4325 3525 4175 3525
+Wire Wire Line
+	4825 3875 4425 3875
+Wire Wire Line
+	4425 3875 4425 3425
+Wire Wire Line
+	4425 3425 4175 3425
+Wire Wire Line
+	4525 4325 4825 4325
+Wire Wire Line
+	4525 3050 4525 4325
+Wire Wire Line
+	4525 3125 4175 3125
+$Comp
+L R R1
+U 1 1 56DDBEEF
+P 4525 2900
+F 0 "R1" H 4650 2950 50  0000 C CNN
+F 1 "10K" H 4375 2950 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Resistor_Single_Sided" V 4455 2900 50  0001 C CNN
+F 3 "" H 4525 2900 50  0000 C CNN
+	1    4525 2900
+	1    0    0    -1  
+$EndComp
+Text Notes 3700 3150 0    47   ~ 0
+MCLR
+Text Notes 3700 3250 0    47   ~ 0
+VDD
+Text Notes 3700 3350 0    47   ~ 0
+VSS
+Text Notes 3700 3450 0    47   ~ 0
+PGD
+Text Notes 3700 3550 0    47   ~ 0
+PGC
+Text Notes 3700 3650 0    47   ~ 0
+N.C.
+Connection ~ 4525 3125
+Wire Wire Line
+	4525 2750 4525 2625
+Wire Wire Line
+	4175 3325 4775 3325
+Wire Wire Line
+	4775 3325 4775 3425
+Wire Wire Line
+	4175 3225 4775 3225
+Wire Wire Line
+	4775 3225 4775 2625
+$Comp
+L LM7805CT IC2
+U 1 1 56DDD859
+P 6300 1850
+F 0 "IC2" H 6100 2050 50  0000 C CNN
+F 1 "LM7805CT" H 6300 2050 50  0000 L CNN
+F 2 "DRM_KiCad_Library:7805_TO220_Single_Sided" H 6300 1950 50  0001 C CIN
+F 3 "" H 6300 1850 50  0000 C CNN
+	1    6300 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C5
+U 1 1 56DDDA19
+P 6825 2050
+F 0 "C5" H 6850 2150 50  0000 L CNN
+F 1 "0.1uF" H 6850 1950 50  0000 L CNN
+F 2 "DRM_KiCad_Library:Capacitor_02_Single_Sided" H 6863 1900 50  0001 C CNN
+F 3 "" H 6825 2050 50  0000 C CNN
+	1    6825 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C4
+U 1 1 56DDDB1B
+P 5725 2025
+F 0 "C4" H 5750 2125 50  0000 L CNN
+F 1 "0.1uF" H 5750 1925 50  0000 L CNN
+F 2 "DRM_KiCad_Library:Capacitor_02_Single_Sided" H 5763 1875 50  0001 C CNN
+F 3 "" H 5725 2025 50  0000 C CNN
+	1    5725 2025
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 1800 7375 1800
+Wire Wire Line
+	7375 1675 7375 1900
+Wire Wire Line
+	6825 1900 6825 1800
+Connection ~ 6825 1800
+Wire Wire Line
+	6825 2275 6825 2200
+Wire Wire Line
+	6300 2275 6300 2100
+Wire Wire Line
+	5725 2175 5725 2275
+Wire Wire Line
+	5025 1800 5900 1800
+Wire Wire Line
+	5725 1800 5725 1875
+$Comp
+L CP C6
+U 1 1 56DDDEE4
+P 7375 2050
+F 0 "C6" H 7400 2150 50  0000 L CNN
+F 1 "10uF 16V" H 7400 1950 50  0000 L CNN
+F 2 "DRM_KiCad_Library:Capacitor_Electrolytic_Small_Single_Sided" H 7413 1900 50  0001 C CNN
+F 3 "" H 7375 2050 50  0000 C CNN
+	1    7375 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7375 2275 7375 2200
+Connection ~ 7375 1800
+$Comp
+L CONN_01X02 P2
+U 1 1 56DDDFF7
+P 3975 1850
+F 0 "P2" H 3975 2000 50  0000 C CNN
+F 1 "2 Way Terminal" V 4075 1850 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Terminal_2W_Single_Sided" H 3975 1850 50  0001 C CNN
+F 3 "" H 3975 1850 50  0000 C CNN
+	1    3975 1850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L D D1
+U 1 1 56DDE256
+P 4875 1800
+F 0 "D1" H 4875 1900 50  0000 C CNN
+F 1 "IN4001" H 4875 1700 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Diode_Single_Sided" H 4875 1800 50  0001 C CNN
+F 3 "" H 4875 1800 50  0000 C CNN
+	1    4875 1800
+	-1   0    0    1   
+$EndComp
+$Comp
+L CP C3
+U 1 1 56DDE379
+P 5200 2050
+F 0 "C3" H 5225 2150 50  0000 L CNN
+F 1 "10uF 16V" H 5225 1950 50  0000 L CNN
+F 2 "DRM_KiCad_Library:Capacitor_Electrolytic_Small_Single_Sided" H 5238 1900 50  0001 C CNN
+F 3 "" H 5200 2050 50  0000 C CNN
+	1    5200 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5200 2200 5200 2275
+Wire Wire Line
+	5200 1800 5200 1900
+Connection ~ 5725 1800
+Connection ~ 5200 1800
+Wire Wire Line
+	4350 1900 4350 2250
+Wire Wire Line
+	4725 1800 4175 1800
+Wire Wire Line
+	4175 1900 4350 1900
+$Comp
+L Earth #PWR5
+U 1 1 56DEAD29
+P 4575 5975
+F 0 "#PWR5" H 4575 5725 50  0001 C CNN
+F 1 "Earth" H 4575 5825 50  0001 C CNN
+F 2 "" H 4575 5975 50  0000 C CNN
+F 3 "" H 4575 5975 50  0000 C CNN
+	1    4575 5975
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR2
+U 1 1 56DEAD7A
+P 3675 4875
+F 0 "#PWR2" H 3675 4625 50  0001 C CNN
+F 1 "Earth" H 3675 4725 50  0001 C CNN
+F 2 "" H 3675 4875 50  0000 C CNN
+F 3 "" H 3675 4875 50  0000 C CNN
+	1    3675 4875
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR1
+U 1 1 56DEADAF
+P 3025 4875
+F 0 "#PWR1" H 3025 4625 50  0001 C CNN
+F 1 "Earth" H 3025 4725 50  0001 C CNN
+F 2 "" H 3025 4875 50  0000 C CNN
+F 3 "" H 3025 4875 50  0000 C CNN
+	1    3025 4875
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR7
+U 1 1 56DEAE9A
+P 4775 3425
+F 0 "#PWR7" H 4775 3175 50  0001 C CNN
+F 1 "Earth" H 4775 3275 50  0001 C CNN
+F 2 "" H 4775 3425 50  0000 C CNN
+F 3 "" H 4775 3425 50  0000 C CNN
+	1    4775 3425
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR14
+U 1 1 56DEAF29
+P 7375 2275
+F 0 "#PWR14" H 7375 2025 50  0001 C CNN
+F 1 "Earth" H 7375 2125 50  0001 C CNN
+F 2 "" H 7375 2275 50  0000 C CNN
+F 3 "" H 7375 2275 50  0000 C CNN
+	1    7375 2275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR12
+U 1 1 56DEAF5E
+P 6825 2275
+F 0 "#PWR12" H 6825 2025 50  0001 C CNN
+F 1 "Earth" H 6825 2125 50  0001 C CNN
+F 2 "" H 6825 2275 50  0000 C CNN
+F 3 "" H 6825 2275 50  0000 C CNN
+	1    6825 2275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR10
+U 1 1 56DEAF93
+P 6300 2275
+F 0 "#PWR10" H 6300 2025 50  0001 C CNN
+F 1 "Earth" H 6300 2125 50  0001 C CNN
+F 2 "" H 6300 2275 50  0000 C CNN
+F 3 "" H 6300 2275 50  0000 C CNN
+	1    6300 2275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR9
+U 1 1 56DEAFC8
+P 5725 2275
+F 0 "#PWR9" H 5725 2025 50  0001 C CNN
+F 1 "Earth" H 5725 2125 50  0001 C CNN
+F 2 "" H 5725 2275 50  0000 C CNN
+F 3 "" H 5725 2275 50  0000 C CNN
+	1    5725 2275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR8
+U 1 1 56DEAFFD
+P 5200 2275
+F 0 "#PWR8" H 5200 2025 50  0001 C CNN
+F 1 "Earth" H 5200 2125 50  0001 C CNN
+F 2 "" H 5200 2275 50  0000 C CNN
+F 3 "" H 5200 2275 50  0000 C CNN
+	1    5200 2275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Earth #PWR3
+U 1 1 56DEB032
+P 4350 2250
+F 0 "#PWR3" H 4350 2000 50  0001 C CNN
+F 1 "Earth" H 4350 2100 50  0001 C CNN
+F 2 "" H 4350 2250 50  0000 C CNN
+F 3 "" H 4350 2250 50  0000 C CNN
+	1    4350 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR6
+U 1 1 56DEB12F
+P 4775 2625
+F 0 "#PWR6" H 4775 2475 50  0001 C CNN
+F 1 "+5V" H 4775 2765 50  0000 C CNN
+F 2 "" H 4775 2625 50  0000 C CNN
+F 3 "" H 4775 2625 50  0000 C CNN
+	1    4775 2625
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR4
+U 1 1 56DEB16B
+P 4525 2625
+F 0 "#PWR4" H 4525 2475 50  0001 C CNN
+F 1 "+5V" H 4525 2765 50  0000 C CNN
+F 2 "" H 4525 2625 50  0000 C CNN
+F 3 "" H 4525 2625 50  0000 C CNN
+	1    4525 2625
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR11
+U 1 1 56DEB1A0
+P 6425 3625
+F 0 "#PWR11" H 6425 3475 50  0001 C CNN
+F 1 "+5V" H 6425 3765 50  0000 C CNN
+F 2 "" H 6425 3625 50  0000 C CNN
+F 3 "" H 6425 3625 50  0000 C CNN
+	1    6425 3625
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR13
+U 1 1 56DEB262
+P 7375 1675
+F 0 "#PWR13" H 7375 1525 50  0001 C CNN
+F 1 "+5V" H 7375 1815 50  0000 C CNN
+F 2 "" H 7375 1675 50  0000 C CNN
+F 3 "" H 7375 1675 50  0000 C CNN
+	1    7375 1675
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X08 P4
+U 1 1 56E04104
+P 7675 4525
+F 0 "P4" H 7675 4975 50  0000 C CNN
+F 1 "Port C" V 7775 4525 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Header_8W_Single_Sided" H 7675 4525 50  0001 C CNN
+F 3 "" H 7675 4525 50  0000 C CNN
+	1    7675 4525
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X04 P3
+U 1 1 56E041BB
+P 4050 5075
+F 0 "P3" H 4050 5325 50  0000 C CNN
+F 1 "Port B" V 4150 5075 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Header_4W_Single_Sided" H 4050 5075 50  0001 C CNN
+F 3 "" H 4050 5075 50  0000 C CNN
+	1    4050 5075
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	6375 4175 7475 4175
+Wire Wire Line
+	7475 4275 6700 4275
+Wire Wire Line
+	6700 4275 6700 4325
+Wire Wire Line
+	6700 4325 6375 4325
+Wire Wire Line
+	6375 4475 6775 4475
+Wire Wire Line
+	6775 4475 6775 4375
+Wire Wire Line
+	6775 4375 7475 4375
+Wire Wire Line
+	6375 4625 6875 4625
+Wire Wire Line
+	6875 4625 6875 4475
+Wire Wire Line
+	6875 4475 7475 4475
+Wire Wire Line
+	7475 4575 6975 4575
+Wire Wire Line
+	6975 4575 6975 4775
+Wire Wire Line
+	6975 4775 6375 4775
+Wire Wire Line
+	7475 4675 7075 4675
+Wire Wire Line
+	7075 4675 7075 4925
+Wire Wire Line
+	7075 4925 6375 4925
+Wire Wire Line
+	7475 4775 7175 4775
+Wire Wire Line
+	7175 4775 7175 5075
+Wire Wire Line
+	7175 5075 6375 5075
+Wire Wire Line
+	7475 4875 7275 4875
+Wire Wire Line
+	7275 4875 7275 5225
+Wire Wire Line
+	7275 5225 6375 5225
+Wire Wire Line
+	4825 4925 4250 4925
+Wire Wire Line
+	4825 5525 4375 5525
+Wire Wire Line
+	4375 5525 4375 5225
+Wire Wire Line
+	4375 5225 4250 5225
+Wire Wire Line
+	4825 5325 4500 5325
+Wire Wire Line
+	4500 5325 4500 5125
+Wire Wire Line
+	4500 5125 4250 5125
+Wire Wire Line
+	4825 5125 4625 5125
+Wire Wire Line
+	4625 5125 4625 5025
+Wire Wire Line
+	4625 5025 4250 5025
+$Comp
+L R R2
+U 1 1 56E0590E
+P 8150 1925
+F 0 "R2" H 8000 2025 50  0000 C CNN
+F 1 "1K" H 8275 1875 50  0000 C CNN
+F 2 "DRM_KiCad_Library:Resistor_Single_Sided" V 8080 1925 50  0001 C CNN
+F 3 "" H 8150 1925 50  0000 C CNN
+	1    8150 1925
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR15
+U 1 1 56E05A5C
+P 8150 1675
+F 0 "#PWR15" H 8150 1525 50  0001 C CNN
+F 1 "+5V" H 8150 1815 50  0000 C CNN
+F 2 "" H 8150 1675 50  0000 C CNN
+F 3 "" H 8150 1675 50  0000 C CNN
+	1    8150 1675
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8150 2075 8150 2300
+Wire Wire Line
+	8150 1775 8150 1675
+$Comp
+L LED D2
+U 1 1 56E062BB
+P 8150 2500
+F 0 "D2" V 8250 2675 50  0000 C CNN
+F 1 "LED RED 3mm" V 7975 2150 50  0000 C CNN
+F 2 "" H 8150 2500 50  0000 C CNN
+F 3 "" H 8150 2500 50  0000 C CNN
+	1    8150 2500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Earth #PWR16
+U 1 1 56E0638A
+P 8150 2800
+F 0 "#PWR16" H 8150 2550 50  0001 C CNN
+F 1 "Earth" H 8150 2650 50  0001 C CNN
+F 2 "" H 8150 2800 50  0000 C CNN
+F 3 "" H 8150 2800 50  0000 C CNN
+	1    8150 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8150 2800 8150 2700
+$EndSCHEMATC
