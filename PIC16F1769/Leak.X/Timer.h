@@ -28,35 +28,28 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef I2C_H
-#define	I2C_H
+#ifndef TIMER_H
+#define	TIMER_H
 
-#include <stdbool.h>
-#include <xc.h>
-
-//The following control bits are used in the I2C state machine to manage
-//the I2C module and determine next states.
-#define I2C_WRITE_COLLISION_STATUS_BIT         SSP1CON1bits.WCOL     // Defines the write collision status bit.
-#define I2C_MODE_SELECT_BITS                   SSP1CON1bits.SSPM     // I2C Master Mode control bit.
-#define I2C_MASTER_ENABLE_CONTROL_BITS         SSP1CON1bits.SSPEN    // I2C port enable control bit.
-
-#define I2C_START_CONDITION_ENABLE_BIT         SSP1CON2bits.SEN      // I2C START control bit.
-#define I2C_REPEAT_START_CONDITION_ENABLE_BIT  SSP1CON2bits.RSEN     // I2C Repeated START control bit.
-#define I2C_RECEIVE_ENABLE_BIT                 SSP1CON2bits.RCEN     // I2C Receive enable control bit.
-#define I2C_STOP_CONDITION_ENABLE_BIT          SSP1CON2bits.PEN      // I2C STOP control bit.
-#define I2C_ACKNOWLEDGE_ENABLE_BIT             SSP1CON2bits.ACKEN    // I2C ACK start control bit.
-#define I2C_ACKNOWLEDGE_DATA_BIT               SSP1CON2bits.ACKDT    // I2C ACK data control bit.
-#define I2C_ACKNOWLEDGE_STATUS_BIT             SSP1CON2bits.ACKSTAT  // I2C ACK status bit.
+#include <xc.h> // include processor files - each processor file is guarded.  
 
 //a BYTE
 typedef unsigned char BYTE;
 
-//function decloreations
-//i2c port config
-void I2C_Init();
-//sends # bytes to address form data
-int i2c_Send(BYTE address, BYTE *data[], int number_of_bytes);
+//function decleration
 
+//timer2 setup and control functions
+/* used for i2c:
+ * no interrup enabled
+ * 8 bit register
+ * uses 4MHz clock with 1:4 pre scaler
+ * 1 tick = 1 micro second
+ * one shot
+ * designed to block out for a shot time
+ */
+void TIMER2_Init();
+void TIMER2_Wait(BYTE Micro_Seconds);
+//end of timer2
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

@@ -5,13 +5,12 @@
  * Created on 11 August 2016, 15:13
  */
 
-
 #include "i2c.h"
 
 //initilise registers for i2c comes
 //RB4 used for SDA
 //RB6 used for SCL
-void i2c_Init()
+void I2C_Init()
 {
     //set B4&B6 to input as needed for MSSP
     TRISB |= 0x50;
