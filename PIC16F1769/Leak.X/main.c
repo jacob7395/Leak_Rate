@@ -48,6 +48,7 @@ void main(void) {
     TRISC = 0xFF;
     TRISA = 0x37;
     
+    //temp VDD/GND power
     //set pin 7&5 to output
     TRISB &= 0x5F;
     //set 7 HIGH while 5 is low/GND
