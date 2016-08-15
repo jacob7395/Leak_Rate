@@ -7,17 +7,6 @@
 
 #include "System_Initialization.h" 
 
-//interup maniger
-void interrupt INTERRUPT_InterruptManager (void)
-{
-   // interrupt handler
-    if(PIE1bits.TMR2IE == 1 && PIR1bits.TMR2IF == 1)
-    {
-        PORTBbits.RB7 = 1;
-        PIR1bits.TMR2IF = 0;
-    }
-}
-
 void main(void) {
     
     //system setup
@@ -44,12 +33,12 @@ void main(void) {
     PORTBbits.RB7 = 1;
     BYTE dummy = 0;
     
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    
     while(1) 
     {      
-        
+        PORTBbits.RB7 = 0;
+        TIMER1_Wait(10000);
+        PORTBbits.RB7 = 1;
+        TIMER1_Wait(10000);
     };
     
     return;

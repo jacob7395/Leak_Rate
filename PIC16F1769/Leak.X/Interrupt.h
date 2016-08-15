@@ -28,41 +28,19 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef TIMER_H
-#define	TIMER_H
+#ifndef INTERRUPT_H
+#define	INTERRUPT_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-//a BYTE
-typedef unsigned char  BYTE;
-//a half word (unsigned 16 bit)
-typedef unsigned short HWORD;
+//Global interrupt enable/disable
+#define INTERRUPT_GlobalInterruptEnable() (INTCONbits.GIE = 1)
+#define INTERRUPT_GlobalInterruptDisable() (INTCONbits.GIE = 0)
+//Peripheral interrupt enable/disable
+#define INTERRUPT_PeripheralInterruptEnable() (INTCONbits.PEIE = 1)
+#define INTERRUPT_PeripheralInterruptDisable() (INTCONbits.PEIE = 0)
 
-//function decleration
-
-//timer1 setup and control functions
-/* used to time LCD commands:
- * no interrupt enabled
- * 16 bit register
- * used 4MHz clock with 1:4 pre scaler
- * 1 tic = 1 micro second
- * Ranges form 0-65535 Micro Seconds
- */
-void TIMER1_Init();
-void TIMER1_Wait(HWORD Micro_Seconds);
-//end of timer1
-//timer2 setup and control functions
-/* used for i2c:
- * no interrupt enabled
- * 8 bit register
- * uses 4MHz clock with 1:4 pre scaler
- * 1 tick = 1 micro second
- * one shot
- * designed to block out for a shot time
- */
-void TIMER2_Init();
-void TIMER2_Wait(BYTE Micro_Seconds);
-//end of timer2
+void interrupt INTERRUPT_InterruptManager(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

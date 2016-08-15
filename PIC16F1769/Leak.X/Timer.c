@@ -8,6 +8,43 @@
 
 #include "Timer.h"
 
+//Timer1 functions
+inline void TIMER1_Start() {T1CON = 0b00100001;};
+inline void TIMER1_Reset() {};
+inline void TIMER1_Stop () {T1CONbits.ON = 0;};
+//timer1 setup
+void TIMER1_Init()
+{
+    //TIMER1 setup
+    //clk = fosc/4; 1/4 prescaler;no secondery ocillator; sync control
+    T1CON  = 0b00100000;
+    //no using gate control
+    T1GCON = 0b00000000;
+    //interupt setup
+    PIE1bits.TMR1IE = 0; //disable interupt
+    PIR1bits.TMR1IF = 0; //clear flag
+}
+
+void TIMER1_Wait (HWORD Micro_Seconds)
+{
+    //set lower and upper timer bytes
+    int Time  =  0xffff - Micro_Seconds;
+    BYTE LOW  =  Time       & 0x00ff;
+    BYTE HIGH = (Time >> 8) & 0x00ff;
+    
+    //load the registers
+    TMR1H = HIGH;
+    TMR1L =  LOW;
+    //start the timer
+    TIMER1_Start();
+    //wait for timer to end
+    while(PIR1bits.TMR1IF == 0) {};
+    //clear flag
+    PIR1bits.TMR1IF = 0;
+    
+    TIMER1_Stop();
+}
+
 //Timer2 functions
 inline void TIMER2_Start() {T2CONbits.ON = 1;};
 inline void TIMER2_Reset() {};
@@ -24,7 +61,7 @@ void TIMER2_Init()
     //select fosv/4 clk
     T2CLKCON    = 0b00000001;
     //interupt setup
-    PIE1bits.TMR2IE = 0; //no interupt
+    PIE1bits.TMR2IE = 0; //disable interupt
     PIR1bits.TMR2IF = 0; //clear flag
 }
 

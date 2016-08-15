@@ -34,6 +34,12 @@
 #include <stdbool.h>
 #include "i2c.h"
 #include "Timer.h"
+#include "Interrupt.h"
+
+//a BYTE
+typedef unsigned char   BYTE;
+//a half word (unsigned 16 bit)
+typedef unsigned short HWORD;
 
 //function decloration
 /*

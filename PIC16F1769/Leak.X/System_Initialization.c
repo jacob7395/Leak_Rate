@@ -38,6 +38,10 @@ void SYSTEM_Initialization()
     PORT_Init();
     I2C_Init();
     TIMER2_Init();
+    TIMER1_Init();
+    //enable global and periphral interupts
+    INTERRUPT_GlobalInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
     
     return;
 }
