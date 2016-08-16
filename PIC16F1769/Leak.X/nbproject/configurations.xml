@@ -8,6 +8,7 @@
       <itemPath>System_Initialization.h</itemPath>
       <itemPath>Timer.h</itemPath>
       <itemPath>Interrupt.h</itemPath>
+      <itemPath>LCD.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -21,6 +22,7 @@
       <itemPath>System_Initialization.c</itemPath>
       <itemPath>Timer.c</itemPath>
       <itemPath>Interrupt.c</itemPath>
+      <itemPath>LCD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

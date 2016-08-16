@@ -43,7 +43,7 @@ int i2c_wait()
     
     return 0;
 }
-//
+//send a byte through the I2C line
 int i2c_Send_Byte(BYTE data)
 {
     SSP1BUF = data;
@@ -71,5 +71,39 @@ int i2c_Send(BYTE address, BYTE *data[], int number_of_bytes)
     //waits for start egnoligment if no start return error 1
     if(i2c_wait() != 0) {return 4;};
     //if all is succssessful return 0
+    return 0;
+}
+//open i2c line with a set address
+int i2c_Open(BYTE address)
+{
+    //set start bit condition flag using SEN bit
+    SSP1CON2bits.SEN = 1;
+    //waits for start egnoligment if no start return error 1
+    if(i2c_wait() != 0) {return 1;};
+    //send address checking for error
+    if(i2c_Send_Byte(address) != 0) {return 2;};
+    
+    return 0;
+}
+//send a string to the current open line
+int i2c_Send_String(BYTE *data[], int number_of_bytes)
+{
+    //loop to send number of Bytes requested
+    for(int i = 0; i < number_of_bytes; i++)
+    {
+        //send each Byte of data
+        if(i2c_Send_Byte(data[i]) != 0) {return 1;};
+    }
+    
+    return 0;
+}
+//close the line
+int i2c_Close()
+{
+    //set i2c stop by setting PEN(bit2) in SSP1CON2
+    SSP1CON2bits.PEN = 0x01;
+    //waits for stop egnoligment if no stop return error 1
+    if(i2c_wait() != 0) {return 1;};
+    
     return 0;
 }

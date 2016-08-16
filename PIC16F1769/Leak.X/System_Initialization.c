@@ -39,6 +39,13 @@ void SYSTEM_Initialization()
     I2C_Init();
     TIMER2_Init();
     TIMER1_Init();
+    //wait for 2 seconds befor LCD Init to prevent line noice at bootip
+    for(int i = 0; i < 250; i++)
+    {
+        TIMER1_Wait(10000);
+    }
+    
+    LCD_Init();
     //enable global and periphral interupts
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();

@@ -28,28 +28,24 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef SYSTEM_INITIALIZATION_H
-#define	SYSTEM_INITIALIZATION_H
+#ifndef LCD_H
+#define	LCD_H
+
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdbool.h>
-#include "i2c.h"
-#include "Timer.h"
-#include "Interrupt.h"
-#include "LCD.h"
 
 //a BYTE
 typedef unsigned char   BYTE;
 //a half word (unsigned 16 bit)
 typedef unsigned short HWORD;
 
-//function decloration
-/*
- * this functions runs setups for:
- * I2C
- * Inital port config
- * Clock
- */
-void SYSTEM_Initialization();
+#define LCD_ADDRESS   0x40
+#define LCD_BACKLIGHT 0b00010000
+#define LCD_ENABLE    0b00100000
 
-#endif	/* SYSTEM_INITIALIZATION_H */
+#define LCD_ENABLE_LOW    0b11111011
+
+//functions
+void LCD_Init();
+
+#endif	/* LCD_H */
 

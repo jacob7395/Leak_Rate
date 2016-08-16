@@ -56,7 +56,14 @@ typedef unsigned char BYTE;
 void I2C_Init();
 //sends # bytes to address form data
 int i2c_Send(BYTE address, BYTE *data[], int number_of_bytes);
-
+//open i2c line with a set address
+int i2c_Open(BYTE address);
+//send a byte to the current open line
+int i2c_Send_Byte(BYTE data);
+//send a string down the i2c line
+int i2c_Send_String(BYTE *data[], int number_of_bytes);
+//close the line
+int i2c_Close();
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 
