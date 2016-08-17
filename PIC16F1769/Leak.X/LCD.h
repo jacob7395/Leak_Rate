@@ -32,7 +32,11 @@
 #define	LCD_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdbool.h>
 
+
+//a BIT
+typedef bool BIT;
 //a BYTE
 typedef unsigned char   BYTE;
 //a half word (unsigned 16 bit)
@@ -44,8 +48,20 @@ typedef unsigned short HWORD;
 
 #define LCD_ENABLE_LOW    0b11111011
 
+//holds LCD page status
+typedef enum
+{
+    P_HOME = 0, //LCDS home page 
+    P_TEST = 1, //LCDS home page 
+            
+}LCD_PAGE_STATES;
+
 //functions
 void LCD_Init();
+//called by TIMER1 interrupt
+void LCD_ICR();
+//returns 1 when LCD is idle
+bool LCD_Idle_Check();
 
 #endif	/* LCD_H */
 

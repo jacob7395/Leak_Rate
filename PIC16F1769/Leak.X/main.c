@@ -22,9 +22,13 @@ void main(void) {
     PORTBbits.RB7 = 1;
     BYTE dummy = 0;
     
+    while(LCD_Idle_Check() == false) {};
+    
+    
+    
     while(1) 
     {
-   
+        
     };
     
     return;

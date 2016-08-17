@@ -51,7 +51,7 @@ int i2c_Send_Byte(BYTE data)
     return 0;
 }
 //protocol to sned data to an address using an array of data bytes
-int i2c_Send(BYTE address, BYTE *data[], int number_of_bytes)
+int i2c_Send(BYTE address, BYTE *data, int number_of_bytes)
 {
     //set start bit condition flag using SEN bit
     SSP1CON2bits.SEN = 1;
@@ -86,7 +86,7 @@ int i2c_Open(BYTE address)
     return 0;
 }
 //send a string to the current open line
-int i2c_Send_String(BYTE *data[], int number_of_bytes)
+int i2c_Send_String(BYTE *data, int number_of_bytes)
 {
     //loop to send number of Bytes requested
     for(int i = 0; i < number_of_bytes; i++)

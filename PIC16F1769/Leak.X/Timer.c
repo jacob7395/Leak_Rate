@@ -21,12 +21,29 @@ void TIMER1_Init()
     //no using gate control
     T1GCON = 0b00000000;
     //interupt setup
-    PIE1bits.TMR1IE = 0; //disable interupt
+    PIE1bits.TMR1IE = 1; //enalbe interupt
     PIR1bits.TMR1IF = 0; //clear flag
 }
 
-void TIMER1_Wait (HWORD Micro_Seconds)
+void TIMER1_Callback (HWORD Micro_Seconds)
 {
+    //set lower and upper timer bytes
+    int Time  =  0xffff - Micro_Seconds;
+    BYTE LOW  =  Time       & 0x00ff;
+    BYTE HIGH = (Time >> 8) & 0x00ff;
+    
+    //load the registers
+    TMR1H = HIGH;
+    TMR1L =  LOW;
+    //start the timer
+    TIMER1_Start();
+}
+
+void TIMER1_BlockOut (HWORD Micro_Seconds)
+{
+    PIE1bits.TMR1IE = 0; //disable interrupt
+    PIR1bits.TMR1IF = 0; //clear flag
+    
     //set lower and upper timer bytes
     int Time  =  0xffff - Micro_Seconds;
     BYTE LOW  =  Time       & 0x00ff;
@@ -39,10 +56,9 @@ void TIMER1_Wait (HWORD Micro_Seconds)
     TIMER1_Start();
     //wait for timer to end
     while(PIR1bits.TMR1IF == 0) {};
-    //clear flag
-    PIR1bits.TMR1IF = 0;
     
-    TIMER1_Stop();
+    PIR1bits.TMR1IF = 0; //clear flag
+    PIE1bits.TMR1IE = 0; //enable interrupt   
 }
 
 //Timer2 functions

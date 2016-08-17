@@ -42,7 +42,7 @@ void SYSTEM_Initialization()
     //wait for 2 seconds befor LCD Init to prevent line noice at bootip
     for(int i = 0; i < 250; i++)
     {
-        TIMER1_Wait(10000);
+        TIMER1_BlockOut(10000);
     }
     
     LCD_Init();

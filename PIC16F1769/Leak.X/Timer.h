@@ -42,14 +42,16 @@ typedef unsigned short HWORD;
 
 //timer1 setup and control functions
 /* used to time LCD commands:
- * no interrupt enabled
+ * with interrupts enabled calling the LCD_ISR
  * 16 bit register
  * used 4MHz clock with 1:4 pre scaler
  * 1 tic = 1 micro second
  * Ranges form 0-65535 Micro Seconds
  */
 void TIMER1_Init();
-void TIMER1_Wait(HWORD Micro_Seconds);
+void TIMER1_Callback(HWORD Micro_Seconds);
+void TIMER1_BlockOut(HWORD Micro_Seconds);
+inline void TIMER1_Stop ();
 //end of timer1
 //timer2 setup and control functions
 /* used for i2c:
