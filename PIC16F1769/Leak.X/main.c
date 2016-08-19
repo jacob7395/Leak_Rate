@@ -24,8 +24,6 @@ void main(void) {
     
     while(LCD_Idle_Check() == false) {};
     
-    
-    
     while(1) 
     {
         

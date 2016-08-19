@@ -56,9 +56,11 @@ void TIMER1_BlockOut (HWORD Micro_Seconds)
     TIMER1_Start();
     //wait for timer to end
     while(PIR1bits.TMR1IF == 0) {};
+    //end timer and reset flags
+    TIMER1_Stop();
     
     PIR1bits.TMR1IF = 0; //clear flag
-    PIE1bits.TMR1IE = 0; //enable interrupt   
+    PIE1bits.TMR1IE = 1; //enable interrupt   
 }
 
 //Timer2 functions

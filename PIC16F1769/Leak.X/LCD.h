@@ -48,13 +48,16 @@ typedef unsigned short HWORD;
 
 #define LCD_ENABLE_LOW    0b11111011
 
+
+#define LCD_PAGE_COUNT 2
 //holds LCD page status
 typedef enum
 {
     P_HOME = 0, //LCDS home page 
-    P_TEST = 1, //LCDS home page 
+    P_TEST = 1, //LCDS test 
+    P_IDLE = 2, //Blank page
             
-}LCD_PAGE_STATES;
+}LCD_PAGE_ID;
 
 //functions
 void LCD_Init();
@@ -62,6 +65,8 @@ void LCD_Init();
 void LCD_ICR();
 //returns 1 when LCD is idle
 bool LCD_Idle_Check();
+//incroment or decorment the line 1 for incroment 0 for decroment
+void LCD_Incroment_Decroment_Line(BIT Incroment_Decroment);
 
 #endif	/* LCD_H */
 
