@@ -72,15 +72,13 @@ void main(void)
     // initialize the device
     SYSTEM_Initialize();
    
-    INTERRUPT_GlobalInterruptEnable();
-    INTERRUPT_PeripheralInterruptEnable();
+    TMR1_StartTimer();
     
     while (1)
     {
-        //set 7 HIGH while 5 is low/GND
-        PORTB |= 0x80;
         
-        // Add your application code
+        
+        TMR1_ReadTimer();
     }
 }
 

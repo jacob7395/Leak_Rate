@@ -9,6 +9,8 @@
       <itemPath>Timer.h</itemPath>
       <itemPath>Interrupt.h</itemPath>
       <itemPath>LCD.h</itemPath>
+      <itemPath>Rotary_Dial.h</itemPath>
+      <itemPath>DAC_ADC.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,6 +25,8 @@
       <itemPath>Timer.c</itemPath>
       <itemPath>Interrupt.c</itemPath>
       <itemPath>LCD.c</itemPath>
+      <itemPath>Rotary_Dial.c</itemPath>
+      <itemPath>DAC_ADC.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

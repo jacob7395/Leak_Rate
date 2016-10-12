@@ -39,6 +39,9 @@
 //Peripheral interrupt enable/disable
 #define INTERRUPT_PeripheralInterruptEnable() (INTCONbits.PEIE = 1)
 #define INTERRUPT_PeripheralInterruptDisable() (INTCONbits.PEIE = 0)
+//Pin interrupt enable/disable
+#define INTERRUPT_PinInterruptEnable() (INTCONbits.IOCIE = 1)
+#define INTERRUPT_PINInterruptDisable() (INTCONbits.IOCIE = 0)
 
 void interrupt INTERRUPT_InterruptManager(void);
 

@@ -28,53 +28,23 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef LCD_H
-#define	LCD_H
+#ifndef ROTARY_DIAL_H
+#define	ROTARY_DIAL_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdbool.h>
-
 
 //a BIT
 typedef bool BIT;
 //a BYTE
 typedef unsigned char   BYTE;
-//a half word (unsigned 16 bit)
-typedef unsigned short HWORD;
 
-#define LCD_ADDRESS   0x40
-#define LCD_BACKLIGHT 0b00010000
-#define LCD_ENABLE    0b00100000
+BYTE counter = 0xB2;
 
-#define LCD_ENABLE_LOW    0b11111011
+//function decleration
+void DIAL_init();
+//DIAL interrupt sirvice routine
+void DIAL_ICR();
 
-
-#define LCD_PAGE_COUNT 5
-//holds LCD page status
-typedef enum
-{
-    P_HOME          = 0, //LCDS home page 
-    P_TEST          = 1, //LCDS test setup page 
-    P_TEST_CON      = 2, //Test conferm page
-    P_TEST_TIMER    = 3, //Test timer page
-    P_CANCLE_TEST   = 4, //page to cancle test
-    P_IDLE          = 5, //Blank page
-            
-}LCD_PAGE_ID;
-
-//functions
-void LCD_Init();
-//returns 1 when LCD is idle
-bool LCD_Idle_Check();
-//incroment or decorment the line 1 for incroment 0 for decroment
-void LCD_Incroment_Decroment_Line(BIT Incroment_Decroment);
-//used by dile to interact with LCD
-void LCD_Manager(BYTE Command);
-//decroment globle time
-inline void LCD_Dectoment_Timer();
-//loat end and start vac
-void Load_Start_Vac(float vac);
-void Load_End_Vac(float vac);
-
-#endif	/* LCD_H */
+#endif	/* ROTARY_DIAL_H */
 

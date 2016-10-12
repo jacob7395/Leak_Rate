@@ -36,6 +36,7 @@
 #include "Timer.h"
 #include "Interrupt.h"
 #include "LCD.h"
+#include "Rotary_Dial.h"
 
 //a BYTE
 typedef unsigned char   BYTE;

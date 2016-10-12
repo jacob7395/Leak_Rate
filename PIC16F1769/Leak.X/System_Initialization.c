@@ -8,11 +8,11 @@
 // CONFIG1
 #pragma config FOSC = INTOSC    // Oscillator Selection Bits (INTOSC oscillator: I/O function on CLKIN pin)
 #pragma config WDTE = OFF    // Watchdog Timer Enable->WDT disabled
-#pragma config PWRTE = ON    // Power-up Timer Enable->PWRT disabled
-#pragma config MCLRE = ON    // MCLR Pin Function Select->MCLR/VPP pin function is digital input
+#pragma config PWRTE = OFF    // Power-up Timer Enable->PWRT disabled
+#pragma config MCLRE = OFF    // MCLR Pin Function Select->MCLR/VPP pin function is digital input
 #pragma config CP = OFF    // Flash Program Memory Code Protection->Program memory code protection is disabled
 #pragma config BOREN = OFF    // Brown-out Reset Enable->Brown-out Reset disabled
-#pragma config CLKOUTEN = ON    // Clock Out Enable->CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin
+#pragma config CLKOUTEN = OFF    // Clock Out Enable->CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin
 #pragma config IESO = OFF    // Internal/External Switchover Mode->Internal/External Switchover Mode is disabled
 #pragma config FCMEN = OFF    // Fail-Safe Clock Monitor Enable->Fail-Safe Clock Monitor is disable
 
@@ -37,18 +37,27 @@ void SYSTEM_Initialization()
     CLOCK_Init();
     PORT_Init();
     I2C_Init();
-    TIMER2_Init();
-    TIMER1_Init();
-    //wait for 2 seconds befor LCD Init to prevent line noice at bootip
-    for(int i = 0; i < 250; i++)
+    TIMER3_Init();
+    TIMER1_Init();  
+    
+    //wait for 1 seconds befor LCD Init to prevent line notice at bootip
+    for(int i = 0; i < 125; i++)
     {
-        TIMER1_BlockOut(10000);
+        TIMER5_BlockOut(10000);
     }
     
     LCD_Init();
-    //enable global and periphral interupts
+    
+    //enable global and periphral interrupts
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
+    
+    //wait for LCD to setup
+    while(LCD_Idle_Check() == false) {};
+    //enable periphral interrupts
+    INTERRUPT_PinInterruptEnable();
+    
+    DIAL_init();
     
     return;
 }
@@ -68,7 +77,7 @@ void PORT_Init()
     LATB = 0x0;
     LATA = 0x0;
     LATC = 0x0;
-    WPUA = 0x3F;
+    WPUA = 0x30;
     WPUB = 0xF0;
     WPUC = 0xFF;
     ANSELA = 0x17;
@@ -76,7 +85,7 @@ void PORT_Init()
     ANSELC = 0xCF;
     TRISB = 0xF0;
     TRISC = 0xFF;
-    TRISA = 0x37;
+    TRISA = 0x3F;
     
     return;
 }

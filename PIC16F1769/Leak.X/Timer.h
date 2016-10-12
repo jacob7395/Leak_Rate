@@ -41,6 +41,7 @@ typedef unsigned short HWORD;
 //function decleration
 
 //timer1 setup and control functions
+//due to complecations with the external occolator timer1 functions use timer3
 /* used to time LCD commands:
  * with interrupts enabled calling the LCD_ISR
  * 16 bit register
@@ -48,23 +49,37 @@ typedef unsigned short HWORD;
  * 1 tic = 1 micro second
  * Ranges form 0-65535 Micro Seconds
  */
+#define TIMER1_IF PIR1bits.TMR1IF
+#define TIMER1_IE PIE1bits.TMR1IE
+
 void TIMER1_Init();
 void TIMER1_Callback(HWORD Micro_Seconds);
-void TIMER1_BlockOut(HWORD Micro_Seconds);
 inline void TIMER1_Stop ();
-//end of timer1
-//timer2 setup and control functions
-/* used for i2c:
- * no interrupt enabled
- * 8 bit register
- * uses 4MHz clock with 1:4 pre scaler
- * 1 tick = 1 micro second
- * one shot
- * designed to block out for a shot time
+//timer3 setup and control functions
+/* used as a generic block out timer not to be usied in itterupts:
+ * 16 bit register
+ * used 4MHz clock with 1:4 pre scaler
+ * 1 tic = 1 micro second
+ * Ranges form 0-65535 Micro Seconds
  */
-void TIMER2_Init();
-void TIMER2_Wait(BYTE Micro_Seconds);
-//end of timer2
+#define TIMER3_IF PIR4bits.TMR3IF
+#define TIMER3_IE PIE4bits.TMR3IE
+
+void TIMER3_Init();
+void TIMER3_BlockOut(HWORD Micro_Seconds);
+//end of timer3
+//timer5 setup and control functions
+/* used as a generic wait timer:
+ * 16 bit register
+ * used 4MHz clock with 1:4 pre scaler
+ * 1 tic = 2 micro second
+ * Ranges form 2-65535 Micro Seconds
+ */
+#define TIMER5_IF PIR4bits.TMR5IF
+#define TIMER5_IE PIE4bits.TMR5IE
+
+void TIMER5_Init();
+void TIMER5_BlockOut(HWORD Micro_Seconds);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

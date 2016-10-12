@@ -9,88 +9,120 @@
 #include "Timer.h"
 
 //Timer1 functions
-inline void TIMER1_Start() {T1CON = 0b00100001;};
-inline void TIMER1_Reset() {};
+inline void TIMER1_Start() {T1CONbits.ON = 1;};
 inline void TIMER1_Stop () {T1CONbits.ON = 0;};
 //timer1 setup
 void TIMER1_Init()
 {
     //TIMER1 setup
-    //clk = fosc/4; 1/4 prescaler;no secondery ocillator; sync control
-    T1CON  = 0b00100000;
+    //clk = external crystal; 0 prescaler; sync control
+    T1CON  = 0b10000000;
     //no using gate control
     T1GCON = 0b00000000;
+    //select external occsolator
+    T1CONbits.T1OSCEN = 1;
     //interupt setup
     PIE1bits.TMR1IE = 1; //enalbe interupt
     PIR1bits.TMR1IF = 0; //clear flag
 }
-
-void TIMER1_Callback (HWORD Micro_Seconds)
+//starts 2 second timer callbacks
+void Start_Timer()
 {
-    //set lower and upper timer bytes
-    int Time  =  0xffff - Micro_Seconds;
-    BYTE LOW  =  Time       & 0x00ff;
-    BYTE HIGH = (Time >> 8) & 0x00ff;
-    
-    //load the registers
-    TMR1H = HIGH;
-    TMR1L =  LOW;
+    //clear the registers
+    TMR1H = 0x00;
+    TMR1L = 0x00;
+    //enable timer interrupt and clear flag
+    PIE1bits.TMR1IE = 1; //enalbe interupt
+    PIR1bits.TMR1IF = 0; //clear flag
     //start the timer
     TIMER1_Start();
 }
-
-void TIMER1_BlockOut (HWORD Micro_Seconds)
+//Timer3 functions
+inline void TIMER3_Start() {T3CONbits.ON = 1;};
+inline void TIMER3_Stop () {T3CONbits.ON = 0;};
+//timer1 setup
+void TIMER3_Init()
 {
-    PIE1bits.TMR1IE = 0; //disable interrupt
-    PIR1bits.TMR1IF = 0; //clear flag
-    
-    //set lower and upper timer bytes
-    int Time  =  0xffff - Micro_Seconds;
-    BYTE LOW  =  Time       & 0x00ff;
-    BYTE HIGH = (Time >> 8) & 0x00ff;
-    
-    //load the registers
-    TMR1H = HIGH;
-    TMR1L =  LOW;
-    //start the timer
-    TIMER1_Start();
-    //wait for timer to end
-    while(PIR1bits.TMR1IF == 0) {};
-    //end timer and reset flags
-    TIMER1_Stop();
-    
-    PIR1bits.TMR1IF = 0; //clear flag
-    PIE1bits.TMR1IE = 1; //enable interrupt   
-}
-
-//Timer2 functions
-inline void TIMER2_Start() {T2CONbits.ON = 1;};
-inline void TIMER2_Reset() {};
-inline void TIMER2_Stop () {T2CONbits.ON = 0;};
-
-//timer2 setup
-void TIMER2_Init()
-{
-    //timer two setup
-    //sync to fosc/4;rising edge input;TMR2_clk enable sycronised;01000 mode (one shot)
-    T2HLT       = 0b10101000;
-    //0 on enable;1:4 prescaler (010); no postscaler (00000)
-    T2CON       = 0b00100000;
-    //select fosv/4 clk
-    T2CLKCON    = 0b00000001;
+    //TIMER1 setup
+    //clk = fosc/4; 1/4 prescaler;no secondery ocillator; sync control
+    T3CON  = 0b00010000;
+    //no using gate control
+    T3GCON = 0b00000000;
     //interupt setup
-    PIE1bits.TMR2IE = 0; //disable interupt
-    PIR1bits.TMR2IF = 0; //clear flag
+    TIMER3_IE = 0; //enalbe interupt
+    TIMER3_IF = 0; //clear flag
 }
 
-void TIMER2_Wait (BYTE Micro_Seconds)
+void TIMER3_BlockOut (HWORD Micro_Seconds)
 {
-    //load the register
-    T2PR = Micro_Seconds;
+    if(T3CONbits.ON) 
+    {
+        TIMER3_Stop();
+    };
+    
+    TIMER3_IE = 0; //disable interrupt
+    TIMER3_IF = 0; //clear flag
+    
+    //set lower and upper timer bytes
+    int Time  =  0xffff - Micro_Seconds;
+    BYTE LOW  =  Time       & 0x00ff;
+    BYTE HIGH = (Time >> 8) & 0x00ff;
+    
+    //load the registers
+    TMR3H = HIGH;
+    TMR3L = LOW;
     //start the timer
-    TIMER2_Start();
+    TIMER3_Start();
     //wait for timer to end
-    while(PIR1bits.TMR2IF == 0) {};
-    //clear flag
-    PIR1bits.TMR2IF = 0;
+    while(TIMER3_IF == 0) {};
+    //end timer and reset flags
+    TIMER3_Stop();
+    
+    TIMER3_IF = 0; //clear flag
+    TIMER3_IE = 1; //enable interrupt   
+}
+//timer 5
+//Timer1 functions
+inline void TIMER5_Start() {T5CONbits.ON = 1;};
+inline void TIMER5_Stop () {T5CONbits.ON = 0;};
+//timer1 setup
+void TIMER5_Init()
+{
+    //TIMER5 setup
+    //clk = fosc/4; 1/8 prescaler;no secondery ocillator; sync control
+    T5CON  = 0b00110000;
+    //no using gate control
+    T5GCON = 0b00000000;
+    //interupt setup
+    TIMER5_IE = 0; //disable interupt
+    TIMER5_IF = 0; //clear flag
+}
+
+void TIMER5_BlockOut (HWORD Micro_Seconds)
+{
+    if(T5CONbits.ON) 
+    {
+        TIMER5_Stop();
+    };
+    
+    TIMER5_IE = 0; //disable interrupt
+    TIMER5_IF = 0; //clear flag
+    
+    //set lower and upper timer bytes
+    int Time  =  0xffff - Micro_Seconds;
+    BYTE LOW  =  Time       & 0x00ff;
+    BYTE HIGH = (Time >> 8) & 0x00ff;
+    
+    //load the registers
+    TMR5H = HIGH;
+    TMR5L = LOW;
+    //start the timer
+    TIMER5_Start();
+    //wait for timer to end
+    while(TIMER5_IF == 0) {};
+    //end timer and reset flags
+    TIMER5_Stop();
+    
+    TIMER5_IF = 0; //clear flag
+    TIMER5_IE = 1; //enable interrupt   
 }

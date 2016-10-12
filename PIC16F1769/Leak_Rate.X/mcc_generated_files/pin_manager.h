@@ -59,6 +59,44 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
+// get/set IO_RB5 aliases
+#define IO_RB5_TRIS               TRISB5
+#define IO_RB5_LAT                LATB5
+#define IO_RB5_PORT               RB5
+#define IO_RB5_WPU                WPUB5
+#define IO_RB5_ANS                ANSB5
+#define IO_RB5_SetHigh()    do { LATB5 = 1; } while(0)
+#define IO_RB5_SetLow()   do { LATB5 = 0; } while(0)
+#define IO_RB5_Toggle()   do { LATB5 = ~LATB5; } while(0)
+#define IO_RB5_GetValue()         PORTBbits.RB5
+#define IO_RB5_SetDigitalInput()    do { TRISB5 = 1; } while(0)
+#define IO_RB5_SetDigitalOutput()   do { TRISB5 = 0; } while(0)
+
+#define IO_RB5_SetPullup()    do { WPUB5 = 1; } while(0)
+#define IO_RB5_ResetPullup()   do { WPUB5 = 0; } while(0)
+#define IO_RB5_SetAnalogMode()   do { ANSB5 = 1; } while(0)
+#define IO_RB5_SetDigitalMode()   do { ANSB5 = 0; } while(0)
+
+
+// get/set IO_RB7 aliases
+#define IO_RB7_TRIS               TRISB7
+#define IO_RB7_LAT                LATB7
+#define IO_RB7_PORT               RB7
+#define IO_RB7_WPU                WPUB7
+#define IO_RB7_ANS                ANSB7
+#define IO_RB7_SetHigh()    do { LATB7 = 1; } while(0)
+#define IO_RB7_SetLow()   do { LATB7 = 0; } while(0)
+#define IO_RB7_Toggle()   do { LATB7 = ~LATB7; } while(0)
+#define IO_RB7_GetValue()         PORTBbits.RB7
+#define IO_RB7_SetDigitalInput()    do { TRISB7 = 1; } while(0)
+#define IO_RB7_SetDigitalOutput()   do { TRISB7 = 0; } while(0)
+
+#define IO_RB7_SetPullup()    do { WPUB7 = 1; } while(0)
+#define IO_RB7_ResetPullup()   do { WPUB7 = 0; } while(0)
+#define IO_RB7_SetAnalogMode()   do { ANSB7 = 1; } while(0)
+#define IO_RB7_SetDigitalMode()   do { ANSB7 = 0; } while(0)
+
+
 
 /**
  * @Param

@@ -7,25 +7,17 @@
 
 #include "System_Initialization.h" 
 
+#include <math.h>
+
 void main(void) {
     
     //system setup
     SYSTEM_Initialization();
+       
+    float volts = 0;
     
-    //temp VDD/GND power
-    //set pin 7&5 to output
-    TRISB &= 0x5F;
-    //set 7 HIGH while 5 is low/GND
-    PORTB |= 0x80;
-    
-    //set RB7 high
-    PORTBbits.RB7 = 1;
-    BYTE dummy = 0;
-    
-    while(LCD_Idle_Check() == false) {};
-    
-    while(1) 
-    {
+    while(1)
+    {        
         
     };
     

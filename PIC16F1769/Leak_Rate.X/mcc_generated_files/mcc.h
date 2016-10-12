@@ -49,8 +49,6 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "interrupt_manager.h"
-#include "i2c.h"
 
 #define _XTAL_FREQ  16000000
 

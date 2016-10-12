@@ -10,18 +10,33 @@
 //files using interrupts
 #include "Timer.h"
 #include "LCD.h"
+#include "Rotary_Dial.h"
 
 //interrupt manager
 void interrupt INTERRUPT_InterruptManager(void)
 {
    // interrupt handler for timer 1
-    if(PIE1bits.TMR1IE == 1 && PIR1bits.TMR1IF == 1)
+    if (TIMER1_IE == 1 && TIMER1_IF == 1)
     {
-        //stop timer1
-        TIMER1_Stop();
         //reset interrupt flag
-        PIR1bits.TMR1IF = 0;
-        //call the LCD ICR
-        LCD_ICR();       
+        TIMER1_IF = 0;
+        //decrse timer by 2 seconds
+        LCD_Dectoment_Timer();
+        //decroment time
+        LCD_Manager(3);
+    }
+    // interrupt for pin C5
+    if (IOCCNbits.IOCCN5  == 1 && IOCCFbits.IOCCF5 == 1)
+    {
+        DIAL_ICR();
+        
+        IOCCFbits.IOCCF5 = 0;
+    }
+    // interrupt for pin C7
+    if (IOCCPbits.IOCCP7 == 1 && IOCCFbits.IOCCF7 == 1)
+    {
+        DIAL_ICR();
+        
+        IOCCFbits.IOCCF7 = 0;
     }
 }
